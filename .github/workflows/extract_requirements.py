@@ -18,7 +18,7 @@ def extract_requirements():
         for req_num in matches:
             req_label = f"REQ-{req_num}"
             if req_label in seen_reqs:
-                print(f"⚠️ Duplicate requirement found: {req_label}")
+                print(f"Duplicate requirement found: {req_label}")
             else:
                 seen_reqs.add(req_label)
                 requirements.append({"Requirement ID": req_label, "Description": line.strip()})

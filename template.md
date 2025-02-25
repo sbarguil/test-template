@@ -9,7 +9,7 @@
 
 ### 1.1 Purpose
 
-This document outlines the high-level design for the networking infrastructure of [briefly describe the system/application].  It serves as a blueprint for the implementation and provides a common understanding of the network architecture.
+This document outlines the high-level design for the networking infrastructure of [briefly describe the system/application].  It serves as a blueprint for the implementation and provides a common understanding of the network architecture. Edit.
 
 ### 1.2 Scope
 

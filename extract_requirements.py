@@ -1,5 +1,6 @@
 import re
 import pandas as pd
+import os
 
 INPUT_MD = "template.md"
 OUTPUT_EXCEL = "requirements.xlsx"

@@ -15,11 +15,13 @@ jobs:
     - stage: test
       name: "Run Validations"
       script:
-        - python your_validation_script.py  # Run your validation script
+        - echo "Running validations..."
+        - python validation_script.py  # Run your validation script
     - stage: build
       name: "Generate Word Document"
       script:
-        - pandoc your_template.md -o output.docx  # Convert Markdown to Word
+        - echo "Generating Word doc from Markdown..."
+        - pandoc template.md -o output.docx  # Convert Markdown to Word
       deploy:  # Optional: deploy the generated document
         provider: releases
         api_key: $GITHUB_TOKEN  # Store your GitHub token in Travis CI settings
@@ -34,6 +36,7 @@ env:
     - GITHUB_TOKEN: secure_your_github_token  # Encrypt your GitHub token
 
 # Trigger builds on pull requests
+# Run the pipeline only on pull requests
 branches:
-  except:
-    - /^(?!pr-).*$/  # Only trigger on pull requests (adjust regex if needed)
+  only:
+    - main

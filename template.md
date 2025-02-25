@@ -1,87 +1,57 @@
----
-title: "Instantiation of IETF Network Slices in Service Providers Network"
-abbrev: "Network models for IETF Network Slice"
-category: std
+# High-Level Design (HLD) Document - Networking
 
-docname: draft-barguil-teas-network-slices-instantation-latest-2
-submissiontype: IETF
-number:
-date:
-consensus: true
-v: 3
-area: "Operations and Management"
-workgroup: "OPSAWG"
-keyword:
- - Slice Service
- - L3VPN
- - L2VPN
+**Project Name:** [Enter Project Name]
+**Document Version:** [e.g., v1.0, v1.1]
+**Author(s):** [List Author Names]
+**Date:** [Date of Creation/Last Update]
 
-author:
- -
-    fullname:  Samier Barguil Giraldo
-    organization: Nokia
-    role: editor
-    email: samier.barguil_giraldo@nokia.com
+## 1. Introduction
 
- -
-    fullname: Luis M. Contreras
-    organization: Telefonica
-    role: editor
-    street: Ronda de la Comunicacion, s/n
-    city: Madrid
-    code: 28050
-    country: Spain
-    email: luismiguel.contrerasmurillo@telefonica.com
-    uri: http://lmcontreras.com
+### 1.1 Purpose
 
- -
-    fullname: Victor Lopez
-    organization: Nokia
-    email: victor.lopez@nokia.com
+This document outlines the high-level design for the networking infrastructure of [briefly describe the system/application].  It serves as a blueprint for the implementation and provides a common understanding of the network architecture.
 
- -
-    fullname: Reza Rokui
-    organization: Ciena
-    email: reza.rokui@nokia.com
+### 1.2 Scope
 
- -
-    fullname: Oscar Gonzalez de Dios
-    organization: Telefonica
-    email: oscar.gonzalezdedios@telefonica.com
+This HLD covers the network architecture, key components, connectivity, security considerations, and performance requirements.  It does *not* include detailed configuration specifics, which will be addressed in the Low-Level Design (LLD) document.
 
- -
-    fullname: Daniel King
-    organization: Olddog Consulting
-    email: daniel@olddog.co.uk
+### 1.3 Audience
 
-normative:
+This document is intended for network engineers, system administrators, security personnel, and other stakeholders involved in the design, implementation, and maintenance of the network.
 
-informative:
+## 2. Business Requirements
 
+### 2.1 Goals and Objectives
 
---- abstract
+* [List the key business goals that the network design supports.  E.g., High availability, scalability, security, performance]
+* [Specific objectives related to the network. E.g., Support for X users, bandwidth requirements, latency targets]
 
-Network Slicing (NS) is an integral part of Service Provider networks.
+### 2.2 Constraints
 
-The IETF has produced several YANG data models to support the
-Software-Defined Networking and network slice architecture and
-YANG-based service models for network slice (NS) instantiation.  
+* [Any limitations or constraints that impact the design. E.g., Budget, existing infrastructure, regulatory requirements]
 
-This document describes the relationship between IETF Network Slice
-models for requesting the IETF Network Slices and (e.g., Layer-3 
-Service Model, Layer-2 Service Model) and Network Models (e.g., Layer-3
-Network Model, Layer-2 Network Model) used during their realizations.
+## 3. Network Architecture
 
-In addition, this document describes the communication between the IETF
-Network Slice Controller and the network controllers for the
-realization of IETF network slices. 
+### 3.1 Diagram
 
-The IETF Network Slice YANG model provides the customer-oriented view of
-the network slice.  Thus, once the IETF Network Slice controller
-(NSC) receives a request, it needs to map it to accomplish the specific
-parameters expected by the network controllers. The network models are
-analyzed to satisfy the IETF Network Slice requirements, and the gaps
-in existing models are reported. 
-
-The document also provides operational and security considerations when
-deploying network slices in Service Provider networks.
+```mermaid
+graph LR
+    subgraph Internet
+        I[Internet]
+    end
+    I --> FW[Firewall]
+    FW --> Core[Core Switch]
+    subgraph Data Center
+        Core --> Agg1[Aggregation Switch 1]
+        Core --> Agg2[Aggregation Switch 2]
+        Agg1 --> S1[Server 1]
+        Agg1 --> S2[Server 2]
+        Agg2 --> S3[Server 3]
+        Agg2 --> S4[Server 4]
+    end
+    subgraph Branch Office
+        Core --> R[Router]
+        R --> SW[Branch Switch]
+        SW --> C1[Client 1]
+        SW --> C2[Client 2]
+    end

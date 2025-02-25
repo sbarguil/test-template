@@ -43,6 +43,12 @@ jobs:
       - name: Extract Requirements to Excel
         run: python extract_requirements.py
 
+      - name: Upload Excel Document as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Generated-excel-Table
+          path: requirements.xlsx"
+
       - name: Install Pandoc
         run: sudo apt-get install -y pandoc
 

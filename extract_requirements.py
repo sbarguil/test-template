@@ -27,6 +27,7 @@ def extract_requirements():
         df = pd.DataFrame(requirements)
         df.to_excel(OUTPUT_EXCEL, index=False)
         print(f"Extracted {len(requirements)} requirements and saved to {OUTPUT_EXCEL}.")
+        print(f"File saved at: {os.path.abspath(OUTPUT_EXCEL)}")  # Debugging line
     else:
         print("No requirements found in the Markdown file.")
 

@@ -28,6 +28,14 @@ This document is intended for network engineers, system administrators, security
 * [List the key business goals that the network design supports.  E.g., High availability, scalability, security, performance]
 * [Specific objectives related to the network. E.g., Support for X users, bandwidth requirements, latency targets]
 
+- [REQ-1]. Test 1
+
+- [REQ-2]. Test 2
+
+[REQ-3]. Test 3
+
+[REQ-4]. Test 3
+
 ### 2.2 Constraints
 
 * [Any limitations or constraints that impact the design. E.g., Budget, existing infrastructure, regulatory requirements]

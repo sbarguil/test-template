@@ -30,8 +30,27 @@ jobs:
           git commit -am "Auto-clean Markdown files" || echo "No changes to commit"
           git push || echo "No changes to push"
 
-  generate-word:
+  generate-excel:
     needs: validate-markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: pip install pandas openpyxl
+
+      - name: Extract Requirements to Excel
+        run: python extract_requirements.py
+
+      - name: Upload Excel File as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Requirements-List
+          path: ./requirements.xlsx
+
+  generate-word:
+    needs: generate-excel
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -48,13 +67,6 @@ jobs:
         with:
           name: Generated-Word-Document
           path: output.docx
-
-  release:
-    needs: generate-word
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
 
       - name: Download Generated Document
         uses: actions/download-artifact@v4
